@@ -18,7 +18,7 @@ This is how my deployment pipeline looks like:
           :restart true)
    (shell :password "base64-encoded-string" :script "commit.sh")))
 #+END_SRC
-As you may guess, the `build` task produces a jar, the `runit` task produces a shell script that, when executed, will move everything into place for the runit supervisor, and finally, the `shell` task executes the latter. This is effectively a deployment scenario reduced to one command. 
+As you may guess, the ~build~ task produces a jar, the ~runit~ task produces a shell script that, when executed, will move everything into place for the runit supervisor, and finally, the ~shell~ task executes the latter. This is effectively a deployment scenario reduced to one command. 
 ** Installation
 
 In ~build.boot~:
