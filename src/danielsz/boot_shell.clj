@@ -1,6 +1,8 @@
 (ns danielsz.boot-shell
   {:boot/export-tasks true}
-  (:require [me.raynes.conch :refer [programs with-programs let-programs]]))
+  (:require
+   [me.raynes.conch :refer [programs with-programs let-programs]]
+   [boot.util       :as util]))
 
 (deftask shell
   "Runs a shell script, optionally as root"
@@ -9,6 +11,7 @@
   (with-pre-wrap fileset
     (let [out-files (core/output-files fileset)
           script  (core/by-name [script] out-files)]
+      (util/info (str "Shelling out " script))
       (with-programs [echo sudo sh]
         (if password
           (sudo "-S" "sh" script {:in (echo password)})
