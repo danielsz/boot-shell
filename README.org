@@ -45,7 +45,7 @@ Options:
 
 #+END_SRC
 
-If you set a password, the shell script will be executed as root. The password must be encoded in base64. Does that make it safe? Absolutely not! Please don’t commit your ~build.boot~ in a public repo. Pull requests adding security features will be accepted. One idea is to store the password in an encrypted file. 
+If you set a password, the shell script will be executed as root. The password must be encoded in base64. Does that make it safe? Absolutely not! Please don’t commit your ~build.boot~ in a public repo. Pull requests adding security features will be accepted. One idea is to pull the password from an encrypted file. 
 
 
 ** License
