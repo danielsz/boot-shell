@@ -1,7 +1,8 @@
 (set-env!
  :source-paths #{"src"}
  :dependencies '[[adzerk/bootlaces "0.1.12" :scope "test"]
-                 [me.raynes/conch "0.8.0"]])
+                 [me.raynes/conch "0.8.0"]
+                 [org.clojure/data.codec "0.1.0"]])
 
 (require '[adzerk.bootlaces :refer :all])
 
