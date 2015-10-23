@@ -1,7 +1,7 @@
 (ns danielsz.boot-shell
   {:boot/export-tasks true}
   (:require
-   [me.raynes.conch :refer [programs with-programs let-programs]]
+   [me.raynes.conch :refer [with-programs]]
    [boot.util       :as util]))
 
 (deftask shell
