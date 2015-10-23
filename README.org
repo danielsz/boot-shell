@@ -1,0 +1,52 @@
+* boot-shell
+
+A boot task that allows you to run a shell script straight from your fileset. It can even do so as root. 
+
+** Motivation
+
+This is how my deployment pipeline looks like:
+
+#+BEGIN_SRC clojure
+(deftask deploy
+  []
+  (comp
+   (cljs :optimizations :advanced)
+   (build)
+   (runit :env {:http-port 8010
+                :db-url "link/to/db" 
+                :repl-port 8013}
+          :restart true)
+   (shell :password "base64-encoded-string" :script "commit.sh")))
+#+END_SRC
+As you may guess, the `build` task produces a jar, the `runit` task produces a shell script that, when executed, will move everything into place for the runit supervisor, and finally, the `shell` task executes the latter. This is effectively a deployment scenario reduced to one command. 
+** Installation
+
+In ~build.boot~:
+#+BEGIN_SRC clojure
+(set-env! :dependencies ‘[[danielsz/boot-shell "X.X.X"]])
+(require '[danielsz.boot-runit :refer [shell]])
+#+END_SRC
+
+Where the current version is:
+
+[[http://clojars.org/danielsz/boot-shell/latest-version.svg]] 
+
+** Usage
+
+#+BEGIN_SRC sh
+$ boot shell -h
+
+Runs a shell script, optionally as root
+
+Options:
+  -h, --help          Print this help info.
+  -s, --script VAL    Set the shell script to run to VAL.
+  -p, --password VAL  Set the root password to VAL
+
+#+END_SRC
+
+** License
+
+Copyright © 2015 Daniel Szmulewicz
+
+Distributed under the Eclipse Public License.
