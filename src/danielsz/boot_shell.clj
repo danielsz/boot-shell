@@ -15,7 +15,7 @@
 (core/deftask shell
   "Runs a shell script, optionally as root"
   [s script VAL str "the shell script to run"
-   p password VAL str "the root password"]
+   p password VAL str "the root password, encoded in base64"]
   (core/with-pre-wrap fileset
     (let [out-files (core/output-files fileset)
           script  (first (core/by-name [script] out-files))]
