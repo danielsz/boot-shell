@@ -24,7 +24,7 @@ As you may guess, the ~build~ task produces a jar, the ~runit~ task produces a s
 In ~build.boot~:
 #+BEGIN_SRC clojure
 (set-env! :dependencies ‘[[danielsz/boot-shell "X.X.X"]])
-(require '[danielsz.boot-runit :refer [shell]])
+(require '[danielsz.boot-shell :refer [shell]])
 #+END_SRC
 
 Where the current version is:
